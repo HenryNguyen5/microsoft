@@ -1,4 +1,6 @@
 var fs = require('fs');
+var und = require("underscore");
+
 var inputFile = process.argv[2];
 inputFile = inputFile.split(',')
 const elip = '...';
@@ -10,7 +12,10 @@ var pages = {
 var output = '';
 var max = pages.curr + pages.roll;
 var min = pages.curr - pages.roll;
+console.log("before");
+console.log("asdas"+und.range(min,max+1));
 
+console.log("after")
 try {
     if (pages.curr > pages.last || pages.curr < 1) throw "ERR";
     for (var i = 1; i <= pages.last; i++) {
@@ -28,12 +33,3 @@ try {
     console.log(e);
 }
 console.log(output)
-
-function range(first, second) {
-    var arr = [];
-    for (var i = first; i <= second; i++) {
-        arr[arr.length] += i;
-    }
-    arr = [arr[0], arr[arr.length - 1]]
-    return arr;
-}
